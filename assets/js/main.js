@@ -1,7 +1,7 @@
 /* ===================================================================
     
     Author          : Valid Theme
-    Template Name   : Poora - Fundraising & Charity Template
+    Template Name   : GFM3 - ONG Génération Femme du 3ème Millénaire
     Version         : 1.0
     
 * ================================================================= */

@@ -1,6 +1,6 @@
 /* ----------------------------------
 
-Template Name: Poora - Fundraising & Charity Template
+Template Name: GFM3 - ONG Génération Femme du 3ème Millénaire
 Author: validtheme
 Description:
 Version: 1.1
@@ -127,10 +127,113 @@ a, .btn, button {
   outline: medium none;
 }
 
+.image-section {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.image-container {
+  display: flex;
+  gap: 30px;
+}
+
+.image-box {
+  display: flex;
+  flex-direction: column;
+  height: 20em;
+  width: 25em;
+  align-items: center;
+}
+
+
+.image-caption {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.image-container-1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust spacing between images */
+  justify-content: center; /* Center images */
+}
+
+.image-box-1 {
+  width: calc(50% - 10px); /* Ensures two items per row with spacing */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.image-box-1 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.video-section {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.video-container {
+  display: flex;
+  gap: 30px;
+}
+
+.video-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+video {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.video-title {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #326bb4;
+  text-align: center;
+}
+
+
 a img, iframe {
   border: none;
 }
+.video-container-1 {
+  max-width: 1000px; /* Set a maximum width for the video container */
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 1rem; /* Optional padding around the video */
+}
 
+.widescreen-video {
+  width: 100%; /* Make the video fill the width of its container */
+  height: auto; /* Maintain the aspect ratio of the video */
+  aspect-ratio: 16 / 9; /* Ensure the video has a widescreen (horizontal) aspect ratio */
+  display: block; /* Ensure no extra space around the video */
+  border-radius: 10px; /* Optional: add rounded corners */
+}
+
+.video-caption-1 {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+}
 p {
   color: #666666;
   margin: 0 0 15px;
@@ -175,7 +278,32 @@ a, a:active, a:focus, a:hover {
   text-decoration: none;
   color: #232323;
 }
+.portrait-image-section {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
 
+.portrait-image-container {
+  display: flex;
+  gap: 40px;
+}
+
+.portrait-image-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portrait-image-caption {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
 a:hover {
   color: #232323;
 }
@@ -5243,6 +5371,10 @@ ul.pagination {
   display: none;
 }
 
+.pf-item img {
+  height: 270px;
+  object-fit: cover;
+}
 
 /* ============================================================== 
      # Help Us Area 
