@@ -261,7 +261,43 @@ pre {
   font-size: 13px;
   line-height: 1.42857143;
 }
-
+.container-1 {
+  max-width: 900px;
+  margin: auto;
+}
+.header-1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+  color: #000;
+}
+.content-1 {
+  margin-top: 20px;
+}
+.highlight-1 {
+  color: red;
+  font-weight: bold;
+}
+.list-1 {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+.list-1 li {
+  margin-bottom: 5px;
+}
+.logos-1 {
+  display: inline;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.image-container-1 {
+  text-align: center;
+  margin: 20px 0;
+}
+.image-container-1 img {
+  width: 150px;
+  height: auto;
+}
 input:focus, textarea:focus, 
  select:focus {
   outline: none;
