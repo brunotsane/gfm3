@@ -2689,6 +2689,11 @@ body,
 .target-area .item-grid img:first-child {
   margin-top: 0;
 }
+.thumb img {
+  height: 250px;
+  object-fit: cover;
+  
+}
 
 .target-area .thumb .content {
   margin-top: 30px;
