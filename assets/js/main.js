@@ -415,38 +415,55 @@
         /* ==================================================
             Contact Form Validations
         ================================================== */
-        $('.contact-form').each(function() {
-            var formInstance = $(this);
-            formInstance.submit(function() {
+$('.contact-form').each(function () {
+    var formInstance = $(this);
 
-                var action = $(this).attr('action');
+    formInstance.submit(function (e) {
+        e.preventDefault(); // Prevent default form submission
 
-                $("#message").slideUp(750, function() {
-                    $('#message').hide();
+        var action = $(this).attr('action');
 
-                    $('#submit')
-                        .after('<img src="assets/img/ajax-loader.gif" class="loader" />')
-                        .attr('disabled', 'disabled');
+        $("#message").slideUp(750, function () {
+            $('#message').hide();
 
-                    $.post(action, {
-                            name: $('#name').val(),
-                            email: $('#email').val(),
-                            phone: $('#phone').val(),
-                            comments: $('#comments').val()
-                        },
-                        function(data) {
-                            document.getElementById('message').innerHTML = data;
-                            $('#message').slideDown('slow');
-                            $('.contact-form img.loader').fadeOut('slow', function() {
-                                $(this).remove()
-                            });
-                            $('#submit').removeAttr('disabled');
-                        }
-                    );
-                });
-                return false;
+            $('#submit')
+                .after('<img src="assets/img/ajax-loader.gif" class="loader" />')
+                .attr('disabled', 'disabled');
+
+            // Build form data as JSON
+            var formData = JSON.stringify({
+                name: $('#name').val(),
+                email: $('#email').val(),
+                phone: $('#phone').val(),
+                comments: $('#comments').val()
+            });
+
+            // Send AJAX request to Netlify Function
+            $.ajax({
+                url: action,
+                method: 'POST',
+                contentType: 'application/json',
+                data: formData,
+                success: function (response) {
+                    $('#message').html(response.message).slideDown('slow');
+                },
+                error: function (xhr) {
+                    const error = xhr.responseJSON?.message || "Erreur lors de l’envoi.";
+                    $('#message').html(error).slideDown('slow');
+                },
+                complete: function () {
+                    $('.contact-form img.loader').fadeOut('slow', function () {
+                        $(this).remove();
+                    });
+                    $('#submit').removeAttr('disabled');
+                }
             });
         });
+
+        return false;
+    });
+});
+
 
     }); // end document ready function
 })(jQuery); // End jQuery
