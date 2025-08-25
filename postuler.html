@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postuler pour Développeur Web Junior - Trouver Mon Job</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="detail_style.css">
+ </head>
+<section class="apply-form">
+    <h2>Postuler pour ce poste</h2>
+    <p>Veuillez remplir le formulaire ci-dessous pour soumettre votre candidature.</p>
+    
+    <form action="send_email.php" method="post" enctype="multipart/form-data">
+
+        <label for="name">Nom et prénom :</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Adresse e-mail :</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="cv">Votre CV :</label>
+        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+
+        <label for="motivation">Lettre de motivation :</label>
+        <textarea id="motivation" name="motivation" rows="8" placeholder="Écrivez votre lettre de motivation ici..." required></textarea>
+
+        <button type="submit">Envoyer ma candidature</button>
+        
+        <input type="hidden" name="recipient_email" value="brindouantoine@gmail.com">
+    </form>
+</section>
