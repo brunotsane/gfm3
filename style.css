@@ -888,9 +888,7 @@ td:nth-child(3) {
   width: 35px;
   line-height: 35px;
   text-align: center;
-  color: #326bb4
-
-;
+  color: #326bb4;
   font-size: 15px;
   border-radius: 50%;
   position: relative;
@@ -1240,9 +1238,7 @@ nav.bootsnav.navbar-default.info-topbar.sticked ul li a {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  color: #326bb4
-
-;
+  color: #326bb4;
   display: inline-block;
   font-size: 14px;
   height: 40px;
