@@ -1741,6 +1741,8 @@ body,
 .banner-area .content {
   position: relative;
   z-index: 9;
+    width: 70%;
+    padding: 10px;
 }
 
 .banner-area.wavesshape {
