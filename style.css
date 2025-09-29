@@ -3575,6 +3575,104 @@ ul.pagination {
   max-width: 60%;
 }
 
+
+
+/* ============================================================== 
+     # Our Vision 
+=================================================================== */
+.vision-area.half-bg {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px;
+}
+
+.vision-area.half-bg::after {
+  position: absolute;
+  left:  0;
+  right:0;
+  content: "";
+  background: #ffffff;
+  z-index: -1;
+  height: 100%;
+  width:100%;
+  top: 0;
+}
+
+@media only screen and (min-width: 1400px) {
+  .vision-area.half-bg::after {
+    left: 100px;
+    right: 0;
+  }
+}
+
+.vision-area .info {
+  padding-left: 35px;
+}
+
+.vision-area .info h5 {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #326bb4;
+  margin-bottom: 25px;
+}
+
+.hibiscus .vision-area .info h5 {
+    color: #326bb4;
+}
+
+.vision-area .info h2 {
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.vision-area .info h4 {
+  font-weight: 700;
+}
+
+.vision-area .info a {
+  margin-top: 30px;
+}
+
+.vision-area ul li {
+  margin-top: 15px;
+  position: relative;
+  z-index: 1;
+  padding-left: 25px;
+}
+
+.vision-area ul li::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "\f058";
+  font-family: "Font Awesome 5 Free";
+  color: #326bb4
+
+;
+  font-weight: 600;
+}
+
+.hibiscus .vision-area ul li::after {
+    color: #326bb4;
+}
+
+.vision-area .thumb {
+  position: relative;
+  margin-bottom: 110px;
+}
+
+.vision-area .thumb .thumb-1 img {
+  max-width: 80%;
+}
+
+.vision-area .thumb .thumb-2 {
+  position: absolute;
+  right: 0;
+  bottom: -120px;
+  border: 10px solid #ffffff;
+  max-width: 60%;
+}
+
 /* ============================================================== 
      # Causes Area 
 =================================================================== */
