@@ -38,7 +38,24 @@
     
 
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TMZWPWW91B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-TMZWPWW91B');
+</script>
+
+<!-- Desactive le clique droit-->
+<script type='text/javascript'>
+    document.addEventListener('contextmenu', function(e){
+    if (e.target.nodeName === 'IMG') {
+        e.preventDefault();
+    }
+}, false);
+</script>
 <body>
 
     <!-- Preloader Start -->
