@@ -3192,7 +3192,7 @@ ul.pagination {
      # Recent Causes 
 =================================================================== */
 
-@media only screen and (min-width: 1367px) {
+@media only screen and (min-width: 3367px) {
   .recent-causes-area .container-full {
     margin-left: calc((100% - 1140px)/ 2);
     width: auto;
