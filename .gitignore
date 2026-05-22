@@ -1,1 +1,4 @@
 assets/img/baniere/Nouveau dossier/Banniere2.jpeg
+node_modules/
+dist/
+dev-server.log
