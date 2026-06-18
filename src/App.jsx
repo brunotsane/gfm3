@@ -1,77 +1,14 @@
-import React, { useEffect, useMemo, useState } from 'react';
+﻿import React, { useEffect, useMemo, useState } from 'react';
 import { PageHero, SectionTitle } from './components/Common.jsx';
 import { Footer, Header, TopBar } from './components/Layout.jsx';
-
-const projects = [
-  ['impact-4-life', 'IMPACT 4 LIFE', '/assets/img/pr_1.jpg'],
-  ['cocoa-life', 'COCOA LIFE', '/assets/img/pr_2.jpeg'],
-  ['swedd-genre', 'SWEDD GENRE', '/assets/img/pr_3.jpg'],
-  ['pmndpe', 'PMNDPE', '/assets/img/pr_4.jpg'],
-  ['padfa', 'PADFA', '/assets/img/proj-6.jpg'],
-  ['plfzn', 'PLFZN', '/assets/img/proj-7.jpg'],
-  ['mtn', 'MTN', '/assets/img/pr_7.jpg'],
-  ['flac', 'FLAC', '/assets/img/proj-8.jpg'],
-  ['clef', 'CLEF', '/assets/img/proj-9.jpg'],
-  ['chiepo', 'CHIEPO', '/assets/img/proj-10.jpg'],
-  ['gfc', 'GFC', '/assets/img/proj-11.jpg'],
-  ['swedd-appui-alimentaire', 'SWEDD Appui Alimentaire', '/assets/img/proj-12.jpg'],
-  ['promis', 'PROMIS', '/assets/img/proj-13.jpg'],
-  ['transition-carbone', 'TRANSITION CARBONE', '/assets/img/proj-14.jpg'],
-  ['genre-et-fistules', 'GENRE ET FISTULES', '/assets/img/proj-15.jpg'],
-];
-
-const projectEn = {
-  'swedd-appui-alimentaire': 'SWEDD Food Support',
-  'genre-et-fistules': 'Gender and Fistula',
-};
-
-function localizeProject(project, t) {
-  const [slug, title, image] = project;
-  return { slug, title: t.lang === 'en' && projectEn[slug] ? projectEn[slug] : title, image };
-}
-
-const articles = [
-  ['actualite-15', 'GFM3 lance officiellement son plan de formation FDFP 2025.', '/assets/img/gfm3_fdfp.jpeg', '15 avril 2026', 'Dans le cadre du renforcement des capacités de son personnel, l’ONG Génération Femme du 3ème Millénaire (GFM3) a procédé ce mercredi 15 avril 2026, au lancement officiel de son plan de formation FDFP agréé au titre de l’année 2025.'],
-  ['actualite-14', 'Zouan-Hounien : les filles en première ligne pour une éducation protectrice et sans grossesses précoces.', '/assets/img/pomci.jpg', '11 avril 2026', 'Le samedi 11 avril 2026, la salle de la mairie de Zouan-Hounien a servi de cadre à une importante campagne de mobilisation en faveur de l’éducation des filles, organisée par la coalition POME-CI avec ses organisations membres.'],
-  ['actualite-13', 'Yamoussoukro a accueilli la 3ᵉ édition du Sommet des Filles Adolescentes (SFA 2026).', '/assets/img/sfa.jpg', '31 mars au 3 avril 2026', 'Un événement majeur réunissant plus de 300 participantes issues de 25 pays. Francophones, anglophones, hispanophones ...'],
-  ['actualite-12', '16 jours d activisme contre les violences basees sur le genre', '/assets/img/16joursactivisme.jpeg', '3 decembre 2025'],
-  ['actualite-11', 'Signature de partenariat avec le MENA', '/assets/img/activite11.jpeg', '19 septembre 2025'],
-  ['actualite-10', 'Revue semestrielle du programme Cocoa Life', '/assets/img/cocoalife1.jpeg', '28 juillet 2025'],
-  ['actualite-9', 'Activites du projet SUCO', '/assets/img/suco1.jpeg', '2025'],
-  ['actualite-8', 'Actions FLAC sur le terrain', '/assets/img/flac1.jpeg', '2025'],
-  ['actualite-7', 'Sante communautaire et protection', '/assets/img/art10.jpg', '2025'],
-  ['actualite-6', 'Protection et education des filles', '/assets/img/art7.jpg', '2025'],
-  ['actualite-5', 'Atelier avec les acteurs locaux', '/assets/img/art1.jpg', '2025'],
-  ['actualite-4', 'Developpement local et mobilisation communautaire', '/assets/img/actu-4.jpg', '2024'],
-  ['actualite-3', 'Renforcement des activites communautaires', '/assets/img/actu-3.jpg', '2024'],
-  ['actualite-2', 'Renforcement des capacites', '/assets/img/blog3.jpg', '2024'],
-  ['actualite-1', 'Vie associative GFM3', '/assets/img/blog2.jpeg', '09 octobre 2024'],
-];
-
-const articleEn = {
-  'actualite-15': ['GFM3 officially launches its FDFP 2025 training plan.', 'April 15, 2026', 'As part of strengthening staff capacity, Generation Femme du 3eme Millenaire (GFM3) officially launched its FDFP training plan approved for 2025.'],
-  'actualite-14': ['Zouan-Hounien: girls at the forefront of protective education without early pregnancies.', 'April 11, 2026', 'The town hall of Zouan-Hounien hosted an important mobilization campaign for girls education, organized by the POME-CI coalition and its member organizations.'],
-  'actualite-13': ['Yamoussoukro hosted the 3rd Adolescent Girls Summit (SFA 2026).', 'March 31 to April 3, 2026', 'A major event bringing together more than 300 participants from 25 countries, including French, English and Spanish-speaking delegations.'],
-  'actualite-12': ['16 days of activism against gender-based violence', 'December 3, 2025'],
-  'actualite-11': ['Partnership signing with MENA', 'September 19, 2025'],
-  'actualite-10': ['Cocoa Life semi-annual program review', 'July 28, 2025'],
-  'actualite-9': ['SUCO project activities', '2025'],
-  'actualite-8': ['FLAC field actions', '2025'],
-  'actualite-7': ['Community health and protection', '2025'],
-  'actualite-6': ['Protection and education for girls', '2025'],
-  'actualite-5': ['Workshop with local stakeholders', '2025'],
-  'actualite-4': ['Local development and community mobilization', '2024'],
-  'actualite-3': ['Strengthening community activities', '2024'],
-  'actualite-2': ['Capacity building', '2024'],
-  'actualite-1': ['GFM3 community life', 'October 9, 2024'],
-};
-
-function localizeArticle(article, t) {
-  const [slug, title, image, date, excerpt] = article;
-  if (t.lang !== 'en' || !articleEn[slug]) return { slug, title, image, date, excerpt };
-  const [enTitle, enDate, enExcerpt] = articleEn[slug];
-  return { slug, title: enTitle, image, date: enDate || date, excerpt: enExcerpt || excerpt };
-}
+import {
+  articles as contentArticles,
+  findContentItem,
+  getGallery,
+  localizeArticle as localizeContentArticle,
+  localizeProject as localizeContentProject,
+  projects as contentProjects,
+} from './content/index.js';
 
 const content = {
   fr: {
@@ -96,7 +33,7 @@ const content = {
       ['Suivez-Nous', "Plus de 20 ans d'actions en faveur de l'amélioration des conditions de vie des femmes, des jeunes et des enfants en milieu rural et périubain.", '/assets/img/baniere/Banniere.jpeg'],
     ],
     aboutTitle: 'ONG Génération Femme du 3ème Millénaire',
-    aboutBody: "La Côte d’ivoire a traversé une crise militaro-politique en 2002 qui a profondément fragilisé les populations, notamment les femmes et les enfants. Après cette crise, un groupe d’amis, dont Madame Honorine VEHI TOURE, a décidé de porter secours aux parents sinistrés dans l’Ouest du pays, qui fut le théâtre de violents combats entre les belligérants.",
+    aboutBody: "La Côte d’Ivoire a traversé une crise militaro-politique en 2002 qui a profondément fragilisé les populations, notamment les femmes et les enfants. Après cette crise, un groupe d’amis, dont Madame Honorine VEHI TOURE, a décidé de porter secours aux parents sinistrés dans l’Ouest du pays, qui fut le théâtre de violents combats entre les belligérants.",
     values: ['REDEVABILITE', 'RIGUEUR', 'SOLIDARITE'],
     themeTitle: "NOS DOMAINES D'INTERVENTION",
     themes: ['SANTE POUR TOUS', 'EDUCATION POUR TOUS', 'SYSTEMATISATION DU GENRE, AUTONOMISATION ET DROITS DE LA FEMME', 'SECURITE ALIMENTAIRE', 'ENVIRONNEMENT ET DEVELOPPEMENT DURABLE', 'SANTE-NUTRITION ET DEVELOPPEMENT DE LA PETITE ENFANCE', 'EAU, HYGIENE ET ASSAINISSEMENT', 'PAIX ET COHESION SOCIALE'],
@@ -307,14 +244,14 @@ function App() {
 
 function renderPage(route, t) {
   const [type, slug] = route.split('/');
-  if (type === 'projects' && slug) return <ProjectDetailPage t={t} item={findItem(projects, slug)} />;
-  if (type === 'news' && slug) return <NewsDetailPage t={t} item={findItem(articles, slug)} />;
+  if (type === 'projects' && slug) return <ProjectDetailPage t={t} item={findContentItem(contentProjects, slug)} />;
+  if (type === 'news' && slug) return <NewsDetailPage t={t} item={findContentItem(contentArticles, slug)} />;
 
   const pages = {
     home: <HomePage t={t} />,
     about: <AboutPage t={t} />,
-    projects: <ListingPage t={t} title={t.projectsTitle} intro={t.projectsIntro} items={projects} base="projects" />,
-    news: <ListingPage t={t} title={t.newsTitle} intro={t.newsIntro} items={articles} base="news" />,
+    projects: <ListingPage t={t} title={t.projectsTitle} intro={t.projectsIntro} items={contentProjects} base="projects" />,
+    news: <ListingPage t={t} title={t.newsTitle} intro={t.newsIntro} items={contentArticles} base="news" />,
     cecaref: <CecarefPage t={t} />,
     collaborate: <CollaboratePage t={t} />,
     contact: <ContactPage t={t} />,
@@ -322,10 +259,6 @@ function renderPage(route, t) {
   };
 
   return pages[type] || pages.home;
-}
-
-function findItem(items, slug) {
-  return items.find(([itemSlug]) => itemSlug === slug) || items[0];
 }
 
 function HomePage({ t }) {
@@ -489,7 +422,7 @@ function HomeNews({ t }) {
         </div>
         <a className="inline-button" href="#/news">{t.readMore}</a>
       </div>
-      <CardGrid t={t} items={articles.slice(0, 3)} base="news" />
+      <CardGrid t={t} items={contentArticles.slice(0, 3)} base="news" />
     </section>
   );
 }
@@ -586,7 +519,7 @@ function ProjectImageGrid({ items, t }) {
   return (
     <div className="project-image-grid">
       {items.map((item) => {
-        const { slug, title, image } = localizeProject(item, t);
+        const { slug, title, image } = localizeContentProject(item, t);
         return (
         <a href={`#/projects/${slug}`} className="project-image-tile" key={slug} aria-label={title}>
           <img src={image} alt="" />
@@ -602,7 +535,7 @@ function CardGrid({ t, items, base }) {
   return (
     <div className="news-grid">
       {items.map((item) => {
-        const localized = base === 'projects' ? localizeProject(item, t) : localizeArticle(item, t);
+        const localized = base === 'projects' ? localizeContentProject(item, t) : localizeContentArticle(item, t);
         const { slug, title, image, date, excerpt } = localized;
         return (
         <article className="news-card" key={slug}>
@@ -621,8 +554,8 @@ function CardGrid({ t, items, base }) {
 }
 
 function NewsDetailPage({ t, item }) {
-  const { slug, title, image, date } = localizeArticle(item, t);
-  const gallery = getArticleGallery(item[0], image);
+  const { slug, title, image, date } = localizeContentArticle(item, t);
+  const gallery = getGallery(item);
 
   return (
     <section className="section actualite-layout">
@@ -644,21 +577,6 @@ function NewsDetailPage({ t, item }) {
   );
 }
 
-function getArticleGallery(slug, fallback) {
-  const galleries = {
-    'actualite-15': ['/assets/img/gfm3_fdfp1.jpg', '/assets/img/gfm3_fdfp2.jpg', '/assets/img/gfm3_fdfp3.jpg', '/assets/img/gfm3_fdfp4.jpg', '/assets/img/gfm3_fdfp5.jpg'],
-    'actualite-14': ['/assets/img/pomci1.jpg', '/assets/img/pomci2.jpg', '/assets/img/pomci3.jpg', '/assets/img/pomci4.jpg'],
-    'actualite-13': ['/assets/img/sfa6.jpg', '/assets/img/sfa5.jpg', '/assets/img/sfa4.jpg', '/assets/img/sfa3.jpg', '/assets/img/sfa2.jpg', '/assets/img/sfa1.jpg'],
-    'actualite-12': ['/assets/img/16joursactivisme.jpeg', '/assets/img/16joursactivisme2.jpeg', '/assets/img/16joursactivisme3.jpeg'],
-    'actualite-11': ['/assets/img/activite12.jpeg', '/assets/img/activite13.jpeg', '/assets/img/activite14.jpeg', '/assets/img/activite15.jpeg'],
-    'actualite-10': ['/assets/img/cocoalife2.jpeg', '/assets/img/cocoalife3.jpeg', '/assets/img/cocoalife4.jpeg', '/assets/img/cocoalife5.jpeg', '/assets/img/cocoalife6.jpeg', '/assets/img/cocoalife7.jpeg'],
-    'actualite-9': ['/assets/img/suco2.jpeg', '/assets/img/suco3.jpeg', '/assets/img/suco4.jpeg', '/assets/img/suco5.jpeg', '/assets/img/suco6.jpeg', '/assets/img/suco7.jpeg'],
-    'actualite-8': ['/assets/img/flac2.jpeg', '/assets/img/flac3.jpeg', '/assets/img/flac4.jpeg'],
-    'actualite-1': ['/assets/img/actu-1_1.jpeg', '/assets/img/actu-1_2.jpeg'],
-  };
-  return galleries[slug] || [fallback];
-}
-
 function ActualiteSidebar({ t, activeSlug }) {
   return (
     <aside className="actualite-sidebar">
@@ -669,8 +587,8 @@ function ActualiteSidebar({ t, activeSlug }) {
       <div className="sidebar-widget">
         <h2>{t.common.recentNews}</h2>
         <div className="project-side-list">
-          {articles.filter(([slug]) => slug !== activeSlug).slice(0, 5).map((item) => {
-            const { slug, title, image, date } = localizeArticle(item, t);
+          {contentArticles.filter((article) => article.slug !== activeSlug).slice(0, 5).map((item) => {
+            const { slug, title, image, date } = localizeContentArticle(item, t);
             return (
             <a href={`#/news/${slug}`} key={slug}>
               <img src={image} alt="" />
@@ -683,7 +601,7 @@ function ActualiteSidebar({ t, activeSlug }) {
       <div className="sidebar-widget">
         <h2>{t.projectsTitle}</h2>
         <div className="sidebar-projects">
-          {projects.slice(0, 6).map(([slug, title, image]) => (
+          {contentProjects.slice(0, 6).map(({ slug, title, image }) => (
             <a href={`#/projects/${slug}`} key={slug} aria-label={title}>
               <img src={image} alt="" />
             </a>
@@ -705,7 +623,7 @@ function ActualiteSidebar({ t, activeSlug }) {
 }
 
 function DetailPage({ t, item, collection, body }) {
-  const [, title, image] = item;
+  const { title, image } = item;
   return (
     <>
       <PageHero title={title} image={image} />
@@ -724,8 +642,8 @@ function DetailPage({ t, item, collection, body }) {
 }
 
 function ProjectDetailPage({ t, item }) {
-  const { title, image } = localizeProject(item, t);
-  const gallery = getProjectGallery(item[0], image);
+  const { title, image } = localizeContentProject(item, t);
+  const gallery = getGallery(item);
 
   return (
     <section className="section actualite-layout project-detail-layout">
@@ -742,30 +660,9 @@ function ProjectDetailPage({ t, item }) {
           ))}
         </div>
       </article>
-      <ProjectSidebar t={t} activeSlug={item[0]} />
+      <ProjectSidebar t={t} activeSlug={item.slug} />
     </section>
   );
-}
-
-function getProjectGallery(slug, fallback) {
-  const galleries = {
-    'impact-4-life': ['/assets/img/pr_1.jpg', '/assets/img/pr5_5.jpeg', '/assets/img/pr5_6.jpeg'],
-    'cocoa-life': ['/assets/img/cocoalife1.jpeg', '/assets/img/cocoalife2.jpeg', '/assets/img/cocoalife3.jpeg', '/assets/img/cocoalife4.jpeg'],
-    'swedd-genre': ['/assets/img/pr_3.jpg', '/assets/img/baniere_swedd.jpg', '/assets/img/baniere_sweed_2.jpg'],
-    pmndpe: ['/assets/img/pr_4.jpg', '/assets/img/pr4_1.jpg', '/assets/img/pr4_2.jpg', '/assets/img/pr4_3.jpg'],
-    padfa: ['/assets/img/proj-6.jpg', '/assets/img/pr_6.jpg'],
-    plfzn: ['/assets/img/proj-7.jpg'],
-    mtn: ['/assets/img/pr_7.jpg', '/assets/img/pr_mtn.jpg'],
-    flac: ['/assets/img/flac1.jpeg', '/assets/img/flac2.jpeg', '/assets/img/flac3.jpeg', '/assets/img/flac4.jpeg'],
-    clef: ['/assets/img/proj-9.jpg'],
-    chiepo: ['/assets/img/proj-10.jpg'],
-    gfc: ['/assets/img/proj-11.jpg'],
-    'swedd-appui-alimentaire': ['/assets/img/proj-12.jpg'],
-    promis: ['/assets/img/proj-13.jpg'],
-    'transition-carbone': ['/assets/img/proj-14.jpg'],
-    'genre-et-fistules': ['/assets/img/proj-15.jpg'],
-  };
-  return galleries[slug] || [fallback];
 }
 
 function ProjectSidebar({ t, activeSlug }) {
@@ -778,8 +675,8 @@ function ProjectSidebar({ t, activeSlug }) {
       <div className="sidebar-widget">
         <h2>{t.projectsTitle}</h2>
         <div className="project-side-list">
-          {projects.filter(([slug]) => slug !== activeSlug).slice(0, 8).map((item) => {
-            const { slug, title, image } = localizeProject(item, t);
+          {contentProjects.filter((project) => project.slug !== activeSlug).slice(0, 8).map((item) => {
+            const { slug, title, image } = localizeContentProject(item, t);
             return (
             <a href={`#/projects/${slug}`} key={slug}>
               <img src={image} alt="" />
@@ -792,8 +689,8 @@ function ProjectSidebar({ t, activeSlug }) {
       <div className="sidebar-widget">
         <h2>{t.newsTitle}</h2>
         <div className="project-side-list">
-          {articles.slice(0, 4).map((item) => {
-            const { slug, title, image, date } = localizeArticle(item, t);
+          {contentArticles.slice(0, 4).map((item) => {
+            const { slug, title, image, date } = localizeContentArticle(item, t);
             return (
             <a href={`#/news/${slug}`} key={slug}>
               <img src={image} alt="" />
